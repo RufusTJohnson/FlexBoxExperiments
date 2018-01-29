@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head> 
+  
+
+<body>
+</body>
+
+
+
+
+<script>
+
+	class cExample
+   {  
+      // ********************************************************************* 
+      // Initialize the index
+      // ********************************************************************* 
+      static init_index() {
+         cExample.index = 0;
+      }   
+      // ********************************************************************* 
+      // Bump the index and return it
+      // ********************************************************************* 
+      static get_index() {
+         return ++cExample.index;
+      }   
+   }
+   
+   cExample.init_index();
+   
+   example = new cExample();
+   console.log(cExample.get_index());
+   example = new cExample();
+   console.log(cExample.get_index());
+   example = new cExample();
+   console.log(cExample.get_index());
+	
+</script>
+
+</html>
