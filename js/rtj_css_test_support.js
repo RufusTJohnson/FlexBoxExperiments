@@ -383,10 +383,6 @@ LOCATED AT TOP BODY IN HTML FILE
 </div>
 <!-- End of rtj_multiple_edited_examples -->
 
-<div class="playable-buttons">
-   <input id="reset" type="button" value="Reset">
-</div>
-
 
 rtj_example_n_style -   id of style tag for example n
 rtj_content_n       -   id of displayable example html section 
@@ -572,88 +568,4 @@ class rtj_Code_edit
 }
 
 
-// *****************************************************************************
-// Test 1
-// *****************************************************************************
-function test1()
-{
-   var logger = new rtj_Logger(10, 10);
-   logger.incLevel();
-   logger.appendIndentCR("abc");
-   logger.decLevel();
-   logger.appendIndentCR("abc");
-   logger.appendIndentCR("ABC");
-   logger.appendIndentCR("ABC");
-   logger.banner("Happy Days");
-   console.log(logger.txt);
-}
-//test1();
 
-
-// *****************************************************************************
-// Test 2
-// *****************************************************************************
-function test2()
-{
-   const obj = { a: 5, b: 7, c: 9 };
-   Object.entries(obj).forEach(([key, value]) => {
-   console.log(`${key} ${value}`); // "a 5", "b 7", "c 9"
-   });
-}
-//test2();
-
-
-// *****************************************************************************
-// Test 3
-// *****************************************************************************
-function test3()
-{
-   var css = new rtj_CSS("Sammo");
-   css.addDeclaration("color","red");
-   css.addDeclarations( {"font":"helvetica","padding":"10px"});
-   console.log(css.get());
-}
-//test3();
-
-// *****************************************************************************
-// Test 4
-// *****************************************************************************
-function test4()
-{
-	rtj_Code_edit.init();
-
-	// patterned on this https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox
-   var code_edit 	= new rtj_Code_edit();
-	var html			=	 '<div class="box flex-container">\n'
-							+'   <div>One</div>\n'
-							+'   <div>Two</div>\n'
-							+'   <div>Three</div>\n'
-							+'</div>';
-	code_edit.add_editable_html(html);
-	
-	var css = new rtj_CSS("#rtj_content_"+code_edit.example_index+" .flex-container");
-   css.addDeclaration("display","flex");
-   css.addDeclarations({"display":"flex","background-color":"DodgerBlue"});
-   var css_text = css.get();
-	code_edit.add_editable_css(css_text);
-	
-	
-	
-	// patterned on this https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox
-   var code_edit 	= new rtj_Code_edit();
-	var html			=	 '<div class="box flex-container">\n'
-							+'   <div>One</div>\n'
-							+'   <div>Two</div>\n'
-							+'   <div>Three</div>\n'
-							+'</div>';
-	code_edit.add_editable_html(html);
-	
-	var css = new rtj_CSS("#rtj_content_"+code_edit.example_index+" .flex-container");
-   css.addDeclaration("display","flex");
-   css.addDeclarations({"display":"flex","background-color":"DodgerBlue"});
-   var css_text = css.get();
-	code_edit.add_editable_css(css_text);
-	var code_edit = new rtj_Code_edit();
-	var code_edit = new rtj_Code_edit();
-}
-test4();
