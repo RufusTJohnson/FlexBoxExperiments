@@ -65,11 +65,15 @@ section input {
 }
 
 .rtj_content{
-	margin-top: 50px;	
+	margin-top: 10px;	
 }
 
 .rtj_description p{
 	font-size: 12px;	
+}
+
+.rtj_example{
+	margin-bottom: 50px;	
 }
 
 

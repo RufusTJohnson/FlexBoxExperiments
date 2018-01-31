@@ -405,9 +405,6 @@ class rtj_Code_edit
    {    
 		this.title            =    "";
 		this.description      =    "";
-		
-      this.section          =    document.querySelector('section');
-      this.editable         =    document.querySelector('.editable');
       this.example_index    =    rtj_Code_edit.get_example_index();
       
 		this.create_container_tags();
@@ -479,7 +476,11 @@ class rtj_Code_edit
 		var comment_begin			=	"************************Begin Example "+this.example_index+"********************************";
 		var comment_end   		=	"************************End Example "+this.example_index+"**********************************";
 
-	
+		var example_id				=  "rtj_example_"+this.example_index;
+		var example_container	=   "<div id=\""+example_id+"\" class=\"rtj_example\"></div>"
+		examples.insertAdjacentHTML('beforeend',example_container);
+      var example 				= 	document.querySelector('#'+example_id);
+		
 		
 		var content		=	 "<div id=\""+description_id+"\" class=\"rtj_description\"></div>"
 								+"<section id=\""+content_id+"\" class=\"rtj_content\">HOLMES</section>"
@@ -491,9 +492,9 @@ class rtj_Code_edit
 		
 		//examples.insertAdjacentText('beforeend',"\n...\n");
 		
-		this.preElementBanneredComment(examples,comment_begin);
-		examples.insertAdjacentHTML('beforeend',content);
-		this.postElementBanneredComment(examples,comment_end);
+		this.preElementBanneredComment(example,comment_begin);
+		example.insertAdjacentHTML('beforeend',content);
+		this.postElementBanneredComment(example,comment_end);
 
 
 		
