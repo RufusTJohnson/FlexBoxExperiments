@@ -23,6 +23,14 @@ function test4()
 
 	// patterned on this https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox
    var code_edit 	= new rtj_Code_edit();
+	var title 						= "Title Goes Here";
+	var description_paragraph	= "First Description Paragraph Goes Here";
+	code_edit.add_title(title);
+	code_edit.add_description_paragraph(description_paragraph);
+	//alert("moo");
+	code_edit.render_title_description();
+
+	
 	var html			=	 '<div class="box flex-container">\n'
 							+'   <div>One</div>\n'
 							+'   <div>Two</div>\n'

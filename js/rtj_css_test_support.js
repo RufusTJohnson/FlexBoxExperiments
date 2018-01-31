@@ -386,7 +386,9 @@ LOCATED AT TOP BODY IN HTML FILE
 
 rtj_example_n_style -   id of style tag for example n
 rtj_content_n       -   id of displayable example html section 
+rtj_description_n   -   id of description of example n 
 rtj_content         -   class of displayable example html section
+rtj_description     -   id of description section (documentation)
 rtj_css_edit_n      -   id of editable css section n gets moved to rtj_example_n_style
 rtj_code_edit_N     -   id of editable code section n gets moved to rtj_content_n
 rtj_reset_n         -   reset button for example n
@@ -401,6 +403,9 @@ class rtj_Code_edit
    // ********************************************************************* 
    constructor() 
    {    
+		this.title            =    "";
+		this.description      =    "";
+		
       this.section          =    document.querySelector('section');
       this.editable         =    document.querySelector('.editable');
       this.example_index    =    rtj_Code_edit.get_example_index();
@@ -467,6 +472,7 @@ class rtj_Code_edit
    create_editable_textareas() {
       var examples 				= 	document.querySelector('#rtj_multiple_edited_examples');
 		var content_id				=	"rtj_content_"+this.example_index;
+		var description_id    	=	"rtj_description_"+this.example_index;
 		var css_text_area_id		=	"rtj_css_edit_"+this.example_index;
 		var code_text_area_id	=	"rtj_code_edit_"+this.example_index;
 		var reset_button_id     =	"rtj_reset_"+this.example_index;
@@ -475,7 +481,8 @@ class rtj_Code_edit
 
 	
 		
-		var content		=	 "<section id=\""+content_id+"\" class=\"rtj_content\">HOLMES</section>"
+		var content		=	 "<div id=\""+description_id+"\" class=\"rtj_description\"></div>"
+								+"<section id=\""+content_id+"\" class=\"rtj_content\">HOLMES</section>"
 								+"<textarea id=\""+css_text_area_id+"\" class=\"playable-css\"></textarea>\n"
 								+"<textarea id=\""+code_text_area_id+"\" class=\"playable-html\"></textarea>"
 								+"<div class=\"playable-buttons\">"
@@ -493,6 +500,7 @@ class rtj_Code_edit
       this.HTML     				=    document.querySelector('#'+content_id);
       this.textareaHTML     	=    document.querySelector('#'+code_text_area_id);
       this.textareaCSS      	=    document.querySelector('#'+css_text_area_id);		
+      this.descriptionarea   	=    document.querySelector('#'+description_id);		
 		
    }
 
@@ -549,14 +557,40 @@ class rtj_Code_edit
 		//alert(css_edit_area.scrollHeight);
    }
 
+   // ********************************************************************* 
+   // Add Title
+   // ********************************************************************* 
+	add_title(title)
+	{
+		this.title            =    title;
+	}
+	
+   // ********************************************************************* 
+   // Add Description Paragraph
+   // ********************************************************************* 
+	add_description_paragraph(description_paragraph)
+	{
+		this.description      +=    "<p>"+description_paragraph+"</p>";
+	}
+	
+   // ********************************************************************* 
+   // Render the Title and the Description
+   // ********************************************************************* 
+	render_title_description()
+	{
+		this.descriptionarea.insertAdjacentHTML('beforeend',"<h2>"+this.title+"</h2>");
+		this.descriptionarea.insertAdjacentHTML('beforeend',this.description);
+	}
 	
 
    // ********************************************************************* 
    // Initialize the Example Index
    // ********************************************************************* 
 	static init() {
+		
 		rtj_Code_edit.ExampleIndex = 0;
 	}	
+	
 	
 	// ********************************************************************* 
    // Bump the ExampleIndex and return it
